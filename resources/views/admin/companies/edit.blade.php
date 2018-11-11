@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="container">
-<h3 class="text-center">Please create a Company</h3>
+<h3 class="text-center">Edit {{$companies->comp_name}}</h3>
 	<div class="col-md-5">
-	{!! Form::model($companies,['method'=>'Post', '[action'=>'CompanyCtrl@update', $companies->id]]) !!}
+	{!! Form::model($companies,['method'=>'Patch', 'action'=>['CompanyCtrl@update', $companies->id]]) !!}
 	{{csrf_field()}}
 	
 	<div class="form-group">
@@ -19,10 +19,13 @@
 	</div>
 	
 	<div class="form-group">
-		{!! Form::submit('Create Company',['class'=>'btn btn-primary']) !!}
+		{!! Form::submit('Update',['class'=>'btn btn-primary']) !!}
 	</div>
 
 {!! Form::close() !!}
+{!! Form::model($companies,['method'=>'Delete', 'action'=>['CompanyCtrl@destroy', $companies->id]]) !!}
+{!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+
 </div>
 
 @endsection

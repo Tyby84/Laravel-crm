@@ -55,6 +55,7 @@ class CompanyCtrl extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -66,7 +67,10 @@ class CompanyCtrl extends Controller
     public function edit($id)
     {
         //
+		
+		
 		$companies=Company::findOrFail($id);
+		
 		return view('admin.companies.edit', compact('companies'));
     }
 
@@ -80,6 +84,13 @@ class CompanyCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
+		$companies=Company::findOrFail($id);
+		
+		$input = $request->all();
+		
+		$companies->update($input);
+		
+		return redirect('admin/companies/');
     }
 
     /**
@@ -91,5 +102,11 @@ class CompanyCtrl extends Controller
     public function destroy($id)
     {
         //
+		
+		$companies=Company::findOrFail($id);
+		
+		$companies->delete();
+		
+		return redirect('admin/companies/');
     }
 }
