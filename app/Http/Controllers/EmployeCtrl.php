@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Employe;
 
 class EmployeCtrl extends Controller
 {
@@ -16,7 +17,8 @@ class EmployeCtrl extends Controller
     public function index()
     {
         //
-		return view('admin.employes.index');
+		$employes = Employe::all();
+		return view('admin.employes.index', compact('employes'));
     }
 
     /**
@@ -27,6 +29,7 @@ class EmployeCtrl extends Controller
     public function create()
     {
         //
+		return view('admin.employes.create');
     }
 
     /**
@@ -38,6 +41,11 @@ class EmployeCtrl extends Controller
     public function store(Request $request)
     {
         //
+		
+		Employe::create($request->all());
+		
+		return view('admin.employes.index');
+
     }
 
     /**
