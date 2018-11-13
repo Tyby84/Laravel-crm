@@ -8,8 +8,8 @@
 	{{csrf_field()}}
 	
 	<div class="form-group">
-	{!! Form::label('employe','Employee\'s name') !!}
-	{!! Form::text('employe',null,['class'=>'form-control']) !!}
+	{!! Form::label('name','Employee\'s name') !!}
+	{!! Form::text('name',null,['class'=>'form-control']) !!}
 	</div>
 	
 	

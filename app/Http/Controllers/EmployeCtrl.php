@@ -44,8 +44,7 @@ class EmployeCtrl extends Controller
 		
 		Employe::create($request->all());
 		
-		return view('admin.employes.index');
-
+		return redirect('admin/employes');
     }
 
     /**
@@ -68,6 +67,8 @@ class EmployeCtrl extends Controller
     public function edit($id)
     {
         //
+		$employes = Employe::findOrFail($id);
+		return view('admin.employes.edit', compact('employes'));
     }
 
     /**
@@ -80,6 +81,10 @@ class EmployeCtrl extends Controller
     public function update(Request $request, $id)
     {
         //
+		$employes = Employe::findOrFail($id);
+		$employes->update($request->all());
+		return redirect('admin/employes');
+
     }
 
     /**
@@ -91,5 +96,10 @@ class EmployeCtrl extends Controller
     public function destroy($id)
     {
         //
+		$employes = Employe::findOrFail($id);
+		$employes->delete();
+
+		return redirect('admin/employes');
+
     }
 }

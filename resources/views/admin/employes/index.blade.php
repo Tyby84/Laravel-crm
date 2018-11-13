@@ -28,11 +28,12 @@
 						<td>{{$emp->location}}</td>
 						<td>{{$emp->created_at}}</td>
 						<td>{{$emp->updated_at}}</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a href="">Create</a></td>
+						<td><a class="btn btn-info" href="{{route('admin.employes.edit', $emp->id)}}">Edit</a></td>
+						<td><a class="btn btn-danger" href="{{route('admin.employes.edit', $emp->id)}}">Delete</a></td>
 					</tr>
 				</tbody>
 			@endforeach
 		@endif
 	</table>
+	@endsection
